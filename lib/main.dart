@@ -19,49 +19,48 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text("Increment App"),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "$nilai",
-                style: TextStyle(
-                  fontSize: 300,
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Dialog"),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
                 ),
-              ),
-              // SizedBox(
-              //   height: 20,
-              // ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
+                title: Text("Peringatan"),
+                content: Text("Konten ini merusak!"),
+                actions: [
                   ElevatedButton(
-                    onPressed: () {
-                      // nilai = nilai - 1;
-                      nilai--;
-                      print(nilai);
-                      setState(() {});
-                    },
-                    child: Icon(Icons.remove),
+                    onPressed: () {},
+                    child: Text("Batal"),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      // nilai = nilai + 1;
-                      nilai++;
-                      print(nilai);
-                      setState(() {});
-                    },
-                    child: Icon(Icons.add),
+                    onPressed: () {},
+                    child: Text("Lanjut"),
                   ),
                 ],
               ),
-            ],
-          ),
+            );
+          },
+          child: Text("Show Dialog"),
         ),
       ),
     );
