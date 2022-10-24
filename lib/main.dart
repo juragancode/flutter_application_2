@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/main.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-// stateless -> tampilan static -> Tidak terjadi perubahan state
-// statefull -> tampilan dynamic -> Berubah - ubah
-
-class MyApp extends StatefulWidget {
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  int nilai = 0;
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,42 +18,33 @@ class _MyAppState extends State<MyApp> {
 }
 
 class HomePage extends StatelessWidget {
-  const HomePage({
-    Key? key,
-  }) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Dialog"),
+        title: Text("SnackBar"),
       ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  "Apakah anda ingin melanjutkan unduhan!",
                 ),
-                title: Text("Peringatan"),
-                content: Text("Konten ini merusak!"),
-                actions: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text("Batal"),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text("Lanjut"),
-                  ),
-                ],
+                action: SnackBarAction(
+                  label: "Batal",
+                  onPressed: () {
+                    print("Eh Kamu GOBLOG!");
+                  },
+                ),
               ),
             );
           },
-          child: Text("Show Dialog"),
+          child: Text("Show Snackbar"),
         ),
       ),
     );
