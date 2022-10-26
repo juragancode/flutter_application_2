@@ -16,42 +16,57 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  // const HomePage({Key? key}) : super(key: key);
+  final List data = [
+    {"judul": "Pilihan ke - 1", "data": 1},
+    {"judul": "Pilihan ke - 2", "data": 2},
+    {"judul": "Pilihan ke - 3", "data": 3},
+    {"judul": "Pilihan ke - 4", "data": 4},
+    {"judul": "Pilihan ke - 6", "data": 6},
+    {"judul": "Pilihan ke - 7", "data": 7},
+    {"judul": "Pilihan ke - 8", "data": 8},
+  ];
+
+  late int dataAwal;
+
+  @override
+  void initState() {
+    dataAwal = data[0]["data"];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 4,
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: false,
-          title: Text("WhatsApp"),
-          backgroundColor: Colors.teal,
-          bottom: TabBar(
-            tabs: [
-              Tab(icon: Icon(Icons.camera_alt)),
-              Tab(text: "Chats"),
-              Tab(text: "Status"),
-              Tab(text: "Calls"),
-            ],
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("DropDown"),
+      ),
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(30),
+          child: DropdownButton<int>(
+            value: dataAwal,
+            items: data
+                .map(
+                  (e) => DropdownMenuItem(
+                    child: Text("${e['judul']}"),
+                    value: e['data'] as int,
+                  ),
+                )
+                .toList(),
+            onChanged: (value) {
+              setState(() {
+                dataAwal = value!;
+              });
+            },
           ),
-        ),
-        body: TabBarView(
-          children: [
-            Center(
-              child: Text("Camera"),
-            ),
-            Center(
-              child: Text("Chats"),
-            ),
-            Center(
-              child: Text("Status"),
-            ),
-            Center(
-              child: Text("Calls"),
-            ),
-          ],
         ),
       ),
     );
