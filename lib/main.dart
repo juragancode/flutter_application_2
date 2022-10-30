@@ -16,85 +16,96 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  late int index;
-  List showWidget = [
-    Center(
-      child: Text(
-        "Home",
-        style: TextStyle(
-          fontSize: 90,
-          color: Colors.red.shade900,
-        ),
-      ),
-    ),
-    Center(
-      child: Text(
-        "Scan",
-        style: TextStyle(
-          fontSize: 90,
-          color: Colors.red.shade900,
-        ),
-      ),
-    ),
-    Center(
-      child: Text(
-        "Profile",
-        style: TextStyle(
-          fontSize: 90,
-          color: Colors.red.shade900,
-        ),
-      ),
-    )
-  ];
-
-  @override
-  void initState() {
-    index = 0;
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Bottom Navigation Bar"),
+        title: Text("Modal Bottom Sheet"),
       ),
-      body: showWidget[index],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.blue,
-        selectedItemColor: Colors.red.shade900,
-        unselectedItemColor: Colors.white,
-        currentIndex: index,
-        onTap: (value) {
-          setState(() {
-            index = value;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            // icon: Icon(Icons.qr_code),
-            icon: Icon(Icons.qr_code_2),
-            label: "Scan",
-          ),
-          BottomNavigationBarItem(
-            // icon: Icon(Icons.account_circle),
-            icon: Icon(Icons.person),
-            label: "Profile",
-          ),
-        ],
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(30),
+          child: ElevatedButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  isDismissible: false,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  builder: (context) => SizedBox(
+                    height: 400,
+                    // color: Colors.black87,
+                    child: ListView(
+                      children: [
+                        ListTile(
+                          onTap: () => print("Add New"),
+                          leading: Icon(Icons.add),
+                          title: Text("New"),
+                        ),
+                        ListTile(
+                          onTap: () => print("Add Photo"),
+                          leading: Icon(Icons.add_a_photo_outlined),
+                          title: Text("Photo"),
+                        ),
+                        ListTile(
+                          onTap: () => print("Add Shop"),
+                          leading: Icon(Icons.add_business),
+                          title: Text("Shop"),
+                        ),
+                        ListTile(
+                          onTap: () => print("Add Call"),
+                          leading: Icon(Icons.add_call),
+                          title: Text("Phone"),
+                        ),
+                        ListTile(
+                          onTap: () => print("Add Link"),
+                          leading: Icon(Icons.add_link),
+                          title: Text("Link"),
+                        ),
+                        ListTile(
+                          onTap: () => print("Add Chart"),
+                          leading: Icon(Icons.add_shopping_cart_outlined),
+                          title: Text("Chart"),
+                        ),
+                        ListTile(
+                          onTap: () => print("Add Location"),
+                          leading: Icon(Icons.add_location_alt_outlined),
+                          title: Text("Location"),
+                        ),
+                        ListTile(
+                          onTap: () => print("Add Drive"),
+                          leading: Icon(Icons.add_to_drive_outlined),
+                          title: Text("Drive"),
+                        ),
+                        ListTile(
+                          onTap: () => print("Add Reaction"),
+                          leading: Icon(Icons.add_reaction_outlined),
+                          title: Text("Reaction"),
+                        ),
+                        ListTile(
+                          onTap: () => print("Add Task"),
+                          leading: Icon(Icons.add_task),
+                          title: Text("Task"),
+                        ),
+                        ListTile(
+                          textColor: Colors.red,
+                          iconColor: Colors.red,
+                          onTap: () => Navigator.pop(context),
+                          leading: Icon(Icons.cancel),
+                          title: Text("Cancel"),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+              child: Text("Show Modal Bottom Sheet")),
+        ),
       ),
     );
   }
