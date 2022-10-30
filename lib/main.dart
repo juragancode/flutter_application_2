@@ -10,7 +10,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
   }
@@ -24,87 +23,180 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Modal Bottom Sheet"),
+        title: Text("Drawer"),
       ),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(30),
-          child: ElevatedButton(
-              onPressed: () {
-                showModalBottomSheet(
-                  context: context,
-                  isDismissible: false,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            Container(
+              alignment: Alignment.bottomLeft,
+              padding: EdgeInsets.all(20),
+              width: double.infinity,
+              height: 150,
+              color: Colors.grey.shade900,
+              child: Text(
+                "Dashboard",
+                style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  ListTile(
+                    onTap: () {
+                      print("Move to Home");
+                    },
+                    leading: Icon(Icons.home),
+                    title: Text("Home"),
                   ),
-                  builder: (context) => SizedBox(
-                    height: 400,
-                    // color: Colors.black87,
-                    child: ListView(
-                      children: [
-                        ListTile(
-                          onTap: () => print("Add New"),
-                          leading: Icon(Icons.add),
-                          title: Text("New"),
-                        ),
-                        ListTile(
-                          onTap: () => print("Add Photo"),
-                          leading: Icon(Icons.add_a_photo_outlined),
-                          title: Text("Photo"),
-                        ),
-                        ListTile(
-                          onTap: () => print("Add Shop"),
-                          leading: Icon(Icons.add_business),
-                          title: Text("Shop"),
-                        ),
-                        ListTile(
-                          onTap: () => print("Add Call"),
-                          leading: Icon(Icons.add_call),
-                          title: Text("Phone"),
-                        ),
-                        ListTile(
-                          onTap: () => print("Add Link"),
-                          leading: Icon(Icons.add_link),
-                          title: Text("Link"),
-                        ),
-                        ListTile(
-                          onTap: () => print("Add Chart"),
-                          leading: Icon(Icons.add_shopping_cart_outlined),
-                          title: Text("Chart"),
-                        ),
-                        ListTile(
-                          onTap: () => print("Add Location"),
-                          leading: Icon(Icons.add_location_alt_outlined),
-                          title: Text("Location"),
-                        ),
-                        ListTile(
-                          onTap: () => print("Add Drive"),
-                          leading: Icon(Icons.add_to_drive_outlined),
-                          title: Text("Drive"),
-                        ),
-                        ListTile(
-                          onTap: () => print("Add Reaction"),
-                          leading: Icon(Icons.add_reaction_outlined),
-                          title: Text("Reaction"),
-                        ),
-                        ListTile(
-                          onTap: () => print("Add Task"),
-                          leading: Icon(Icons.add_task),
-                          title: Text("Task"),
-                        ),
-                        ListTile(
-                          textColor: Colors.red,
-                          iconColor: Colors.red,
-                          onTap: () => Navigator.pop(context),
-                          leading: Icon(Icons.cancel),
-                          title: Text("Cancel"),
-                        ),
-                      ],
-                    ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Office");
+                    },
+                    leading: Icon(Icons.home_work_outlined),
+                    title: Text("Office"),
                   ),
-                );
-              },
-              child: Text("Show Modal Bottom Sheet")),
+                  ListTile(
+                    onTap: () {
+                      print("Add New Shop");
+                    },
+                    leading: Icon(Icons.add_business),
+                    title: Text("New Shop"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Home");
+                    },
+                    leading: Icon(Icons.home),
+                    title: Text("Home"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Office");
+                    },
+                    leading: Icon(Icons.home_work_outlined),
+                    title: Text("Office"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Add New Shop");
+                    },
+                    leading: Icon(Icons.add_business),
+                    title: Text("New Shop"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Home");
+                    },
+                    leading: Icon(Icons.home),
+                    title: Text("Home"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Office");
+                    },
+                    leading: Icon(Icons.home_work_outlined),
+                    title: Text("Office"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Add New Shop");
+                    },
+                    leading: Icon(Icons.add_business),
+                    title: Text("New Shop"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Home");
+                    },
+                    leading: Icon(Icons.home),
+                    title: Text("Home"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Office");
+                    },
+                    leading: Icon(Icons.home_work_outlined),
+                    title: Text("Office"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Add New Shop");
+                    },
+                    leading: Icon(Icons.add_business),
+                    title: Text("New Shop"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Home");
+                    },
+                    leading: Icon(Icons.home),
+                    title: Text("Home"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Office");
+                    },
+                    leading: Icon(Icons.home_work_outlined),
+                    title: Text("Office"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Add New Shop");
+                    },
+                    leading: Icon(Icons.add_business),
+                    title: Text("New Shop"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Home");
+                    },
+                    leading: Icon(Icons.home),
+                    title: Text("Home"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Office");
+                    },
+                    leading: Icon(Icons.home_work_outlined),
+                    title: Text("Office"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Add New Shop");
+                    },
+                    leading: Icon(Icons.add_business),
+                    title: Text("New Shop"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Home");
+                    },
+                    leading: Icon(Icons.home),
+                    title: Text("Home"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Move to Office");
+                    },
+                    leading: Icon(Icons.home_work_outlined),
+                    title: Text("Office"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      print("Add New Shop");
+                    },
+                    leading: Icon(Icons.add_business),
+                    title: Text("New Shop"),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
