@@ -17,27 +17,47 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  // const HomePage({Key? key}) : super(key: key);
-  final List data = [
-    {"judul": "Pilihan ke - 1", "data": 1},
-    {"judul": "Pilihan ke - 2", "data": 2},
-    {"judul": "Pilihan ke - 3", "data": 3},
-    {"judul": "Pilihan ke - 4", "data": 4},
-    {"judul": "Pilihan ke - 6", "data": 6},
-    {"judul": "Pilihan ke - 7", "data": 7},
-    {"judul": "Pilihan ke - 8", "data": 8},
+  late int index;
+  List showWidget = [
+    Center(
+      child: Text(
+        "Home",
+        style: TextStyle(
+          fontSize: 90,
+          color: Colors.red.shade900,
+        ),
+      ),
+    ),
+    Center(
+      child: Text(
+        "Scan",
+        style: TextStyle(
+          fontSize: 90,
+          color: Colors.red.shade900,
+        ),
+      ),
+    ),
+    Center(
+      child: Text(
+        "Profile",
+        style: TextStyle(
+          fontSize: 90,
+          color: Colors.red.shade900,
+        ),
+      ),
+    )
   ];
-
-  late int dataAwal;
 
   @override
   void initState() {
-    dataAwal = data[0]["data"];
+    index = 0;
     super.initState();
   }
 
@@ -46,28 +66,35 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("DropDown"),
+        title: Text("Bottom Navigation Bar"),
       ),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(30),
-          child: DropdownButton<int>(
-            value: dataAwal,
-            items: data
-                .map(
-                  (e) => DropdownMenuItem(
-                    child: Text("${e['judul']}"),
-                    value: e['data'] as int,
-                  ),
-                )
-                .toList(),
-            onChanged: (value) {
-              setState(() {
-                dataAwal = value!;
-              });
-            },
+      body: showWidget[index],
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.blue,
+        selectedItemColor: Colors.red.shade900,
+        unselectedItemColor: Colors.white,
+        currentIndex: index,
+        onTap: (value) {
+          setState(() {
+            index = value;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
           ),
-        ),
+          BottomNavigationBarItem(
+            // icon: Icon(Icons.qr_code),
+            icon: Icon(Icons.qr_code_2),
+            label: "Scan",
+          ),
+          BottomNavigationBarItem(
+            // icon: Icon(Icons.account_circle),
+            icon: Icon(Icons.person),
+            label: "Profile",
+          ),
+        ],
       ),
     );
   }
